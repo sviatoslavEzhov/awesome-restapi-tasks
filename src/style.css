@@ -1,6 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 :root {
 	--page-color: #545454;
 	--area-color: #474747;
+}
+
+html {
+	font-family: Roboto, 'sans-serif';
 }
 
 html,
@@ -15,21 +21,19 @@ body,
 	background-color: var(--page-color);
 }
 
-header,
-footer {
+html > header,
+html > footer {
 	background-color: var(--area-color);
 }
 
-header {
+html > header {
 	min-height: 2rem;
+}
+
+html > footer {
+	min-height: 4rem;
 }
 
 main {
 	flex-grow: 1;
 }
-
-footer {
-	min-height: 4rem;
-}
-
-
