@@ -21,6 +21,7 @@ export default {
 			type: String,
 			default: 'Default Header'
 		},
+
 		description: {
 			type: String,
 			default: 'Default Description'
@@ -34,6 +35,7 @@ export default {
 	background-color: #C3C3C3;
 	border-radius: 5px;
 	overflow: hidden;
+	min-width: 445px;
 }
 
 .form-wrapper__header {

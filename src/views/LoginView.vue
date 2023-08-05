@@ -1,26 +1,26 @@
 <template>
-	<FormWrapper
-		header="Login"
-		description="Enter your credentials"
-	>
-		<LoginForm/>
-	</FormWrapper>
+	<AuthForm
+		:authType="$constants.LOG_IN"
+		header="Log In"
+		description="Enter Your credentials"
+		@submit="login"
+	/>
 </template>
 
 <script>
-import FormWrapper from "@UI/FormWrapper.vue";
-import LoginForm from "@components/LoginForm.vue";
+import AuthForm from "@components/AuthForm.vue";
 
 export default {
-	name: "LoginView",
+	name: "LogInView",
 
 	components: {
-		LoginForm,
-		FormWrapper
+		AuthForm
+	},
+
+	methods: {
+		login(data) {
+			console.log(`login`, data)
+		}
 	}
 }
 </script>
-
-<style scoped>
-
-</style>
