@@ -1,10 +1,10 @@
 <template>
 	<div class="form-wrapper">
 		<header class="form-wrapper__header">
-			<span class="form-wrapper__text">{{ header }}</span>
+			<span v-if="header" class="form-wrapper__text">{{ header }}</span>
 		</header>
 		<div class="form-wrapper__inner">
-			<div class="login-form__description form-wrapper__text">
+			<div v-if="description" class="login-form__description form-wrapper__text">
 				{{ description }}
 			</div>
 			<slot/>
@@ -19,12 +19,12 @@ export default {
 	props: {
 		header: {
 			type: String,
-			default: 'Default Header'
+			default: ''
 		},
 
 		description: {
 			type: String,
-			default: 'Default Description'
+			default: ''
 		}
 	}
 }

@@ -1,5 +1,5 @@
 <template>
-	<FormWrapper
+	<CardWrapper
 		:header="header"
 		:description="description"
 	>
@@ -11,13 +11,13 @@
 				class="auth-form__input auth-form__username"
 				v-model.trim="username"
 				@focus="resetErrors"
-				placeholder="Enter Username"
+				placeholder="Username"
 			/>
 			<VInput
 				class="auth-form__input auth-form__password"
 				v-model.trim="phoneNumber"
 				@focus="resetErrors"
-				placeholder="Enter Phone Number"
+				placeholder="Phone Number"
 			/>
 			<VButton
 				class="auth-form__button"
@@ -34,19 +34,22 @@
 				{{ error }}
 			</p>
 		</div>
-	</FormWrapper>
+		<div
+			v-if="responseError"
+			class="auth-error"
+		>
+			<p>{{ responseError }}</p>
+		</div>
+	</CardWrapper>
 </template>
 
 <script>
 import constants from "@/constants.js";
-import FormWrapper from "@UI/FormWrapper.vue";
+import CardWrapper from "@UI/CardWrapper.vue";
 import VButton from "@UI/VButton.vue";
 import VInput from "@UI/VInput.vue";
 
-const { LOG_IN, SING_UP } = constants
-const usernameRegexPattern = /^[a-zA-Z]+$/
-// https://ihateregex.io/expr/phone/
-const phoneNumberRegexPattern = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/
+const { LOG_IN, SING_UP, USER_NAME_REGEX, PHONE_NUMBER_REGEX } = constants
 
 export default {
 	name: "AuthForm",
@@ -54,10 +57,10 @@ export default {
 	components: {
 		VButton,
 		VInput,
-		FormWrapper
+		CardWrapper
 	},
 
-	emits: ['submit'],
+	emits: ['submit', 'reset'],
 
 	props: {
 		authType: {
@@ -74,13 +77,18 @@ export default {
 
 		description: {
 			type: String
+		},
+
+		responseError: {
+			type: String,
+			default: null
 		}
 	},
 
 	data() {
 		return {
-			username: '',
-			phoneNumber: '',
+			username: 'Bret',
+			phoneNumber: '1-770-736-8031',
 			errors: []
 		}
 	},
@@ -101,13 +109,14 @@ export default {
 	methods: {
 		resetErrors() {
 			this.errors = []
+			this.$emit('reset')
 		},
 
 		checkForm() {
 			this.resetErrors()
 
-			const isUsernameValid = usernameRegexPattern.test(this.username)
-			const isPhoneNumberValid = phoneNumberRegexPattern.test(this.phoneNumber)
+			const isUsernameValid = USER_NAME_REGEX.test(this.username)
+			const isPhoneNumberValid = PHONE_NUMBER_REGEX.test(this.phoneNumber.replace('.', ''))
 
 			if (!this.username) {
 				this.errors.push('Username required.')
@@ -166,7 +175,10 @@ export default {
 	}
 
 	p {
-		margin-top: 0;
+		margin: 0;
+	}
+
+	p:not(:last-of-type) {
 		margin-bottom: 0.5rem;
 	}
 
