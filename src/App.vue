@@ -1,5 +1,9 @@
 <template>
-  <router-view />
+  <header></header>
+  <main>
+    <router-view />
+  </main>
+  <footer></footer>
 </template>
 
 <script>
@@ -8,5 +12,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
 </style>
