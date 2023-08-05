@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import AuthForm from "@components/AuthForm.vue";
 
 export default {
@@ -17,10 +18,20 @@ export default {
 		AuthForm
 	},
 
+	created() {
+		this.readUsers()
+	},
+
+	computed: {
+		...mapState('users', ['list'])
+	},
+
 	methods: {
 		login(data) {
 			console.log(`login`, data)
-		}
+		},
+
+		...mapActions('users', ['readUsers'])
 	}
 }
 </script>
