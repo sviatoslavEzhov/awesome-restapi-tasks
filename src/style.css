@@ -5,17 +5,21 @@
 	--area-color: #474747;
 }
 
+* {
+	box-sizing: border-box;
+}
+
 html {
 	font-family: Roboto, 'sans-serif';
 }
 
 html,
-body,
-#app {
+body {
 	height: 100%;
 }
 
 #app {
+	min-height: 100%;
 	display: flex;
 	flex-direction: column;
 	background-color: var(--page-color);

@@ -14,7 +14,7 @@
 
 <script>
 export default {
-	name: "FormWrapper",
+	name: 'FormWrapper',
 
 	props: {
 		header: {

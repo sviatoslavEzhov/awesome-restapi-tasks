@@ -52,7 +52,7 @@ import VInput from "@UI/VInput.vue";
 const { LOG_IN, SING_UP, USER_NAME_REGEX, PHONE_NUMBER_REGEX } = constants
 
 export default {
-	name: "AuthForm",
+	name: 'AuthForm',
 
 	components: {
 		VButton,
@@ -87,8 +87,8 @@ export default {
 
 	data() {
 		return {
-			username: 'Bret',
-			phoneNumber: '1-770-736-8031',
+			username: '',
+			phoneNumber: '',
 			errors: []
 		}
 	},

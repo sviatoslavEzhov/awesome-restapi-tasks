@@ -9,7 +9,7 @@
 
 <script>
 export default {
-	name: "VInput",
+	name: 'VInput',
 
 	emits: ['update:modelValue'],
 

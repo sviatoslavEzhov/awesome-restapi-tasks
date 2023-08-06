@@ -6,7 +6,7 @@
 
 <script>
 export default {
-	name: "VButton",
+	name: 'VButton',
 
 	props: {
 		type: {
